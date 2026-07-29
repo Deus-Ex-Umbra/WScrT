@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Database
+pgsql/
+
+# IDE / Agent state
+.agents/
+.vscode/
+.idea/
+
+# Build and distribution outputs
+dist/
+out/
+build/
+*.exe
+
+# Logs & Environment
+*.log
+npm-debug.log*
+.env
+.env.local
+
+# System files
+.DS_Store
+Thumbs.db
