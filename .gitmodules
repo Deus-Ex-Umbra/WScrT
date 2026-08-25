@@ -4,3 +4,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/Deus-Ex-Umbra/WScrT-frontend
+[submodule "scrappers"]
+	path = scrappers
+	url = https://github.com/Deus-Ex-Umbra/WScrT-Scrappers.git
