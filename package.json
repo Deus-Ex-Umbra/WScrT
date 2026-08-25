@@ -2,16 +2,38 @@
   "name": "wscrt---electron",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron .",
+    "build:electron": "tsc",
+    "start:backend:dev": "npm --prefix backend run start:dev",
+    "start:frontend:dev": "npm --prefix frontend run dev",
+    "start:electron:wait": "wait-on http://localhost:5173 && npm run build:electron && cross-env NODE_ENV=development electron .",
+    "start:dev": "concurrently \"npm run start:backend:dev\" \"npm run start:frontend:dev\" \"npm run start:electron:wait\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "npm run build:electron && electron-builder build --win"
+  },
+  "build": {
+    "appId": "com.wscrt.app",
+    "productName": "WScrT",
+    "win": {
+      "icon": "src/logo.ico"
+    },
+    "nsis": {
+      "installerIcon": "src/logo.ico",
+      "uninstallerIcon": "src/logo.ico"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^25.9.3",
+    "concurrently": "^10.0.4",
+    "cross-env": "^10.1.0",
     "electron": "^42.4.1",
-    "typescript": "^6.0.3"
+    "electron-builder": "^26.15.3",
+    "typescript": "^6.0.3",
+    "wait-on": "^9.1.0"
   }
 }
